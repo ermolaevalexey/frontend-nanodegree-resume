@@ -120,6 +120,6 @@ var education = {
 for (var edu in education.schools){
 
 	//console.log( prop + ':' + bio.contacts[prop]);
-	$("#education").append('<div class="education-entry"><a href="#">'+education.schools.name+'</div>');
+	$("#education").append('<div class="education-entry"><a href="#">'+education.schools[edu].name+'</div>');
 
 }
