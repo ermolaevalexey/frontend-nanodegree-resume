@@ -24,6 +24,10 @@ h6 {
   padding: 0 5%;
 }
 
+.education-entry img {
+    width: 500px;
+}
+
 h1 {
   font-size: 40px;
   color: #f5a623;
