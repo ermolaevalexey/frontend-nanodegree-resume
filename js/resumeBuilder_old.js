@@ -1,8 +1,18 @@
 /*
 This is empty on purpose! Your code to build the resume will go here.
  */
-var name = "Alexey Ermolaev";
-var role = "Web Developer";
+ var name = "Alexey Ermolaev";
+ var role = "Web Developer";
+ //$("#main").append("Alexey Ermolaev");
+
+//var awesomeThoughts = "I am Alexey Ermolaev and I am awesome!";
+
+//var funThoughts = awesomeThoughts.replace("awesome", "fun");
+
+//console.log(awesomeThoughts);
+//console.log(funThoughts);
+
+//$("#main").append("<p>"+funThoughts+"</p>");
 
 var formattedName, formattedRole;
 
@@ -10,9 +20,25 @@ formattedName = HTMLheaderName.replace("%data%", name);
 
 formattedRole = HTMLheaderRole.replace("%data%", role);
 
+
+
+//$("#header").prepend(formattedName, formattedRole);
+
+
+/*var str1 = "audacity";
+var str2 = str1.slice(1);
+console.log( str2.replace("u", "U") );*/
+
+/*var arr = [1,2,3];
+console.log(arr.length);
+
+for (var i = 0; i < arr.length; i++) {
+	console.log( i +" "+arr[i]);
+}*/
+
 var bio = {
-	name: 'Alexey Ermolaev',
-	role: 'Web Developer',
+	name: formattedName,
+	role: formattedRole,
 	contacts : {
 		mobile : "+7 (911) 034 62 37",
 		email: "descendended@gmail.com",
@@ -28,13 +54,14 @@ var bio = {
 	}
 };
 
-$("#header").prepend('<h1 id="name">'+bio.name.replace(/<|\>/g, '')+'</h1>', '<span>'+bio.role+'</span><hr/>');
+$("#header").prepend(bio.name, bio.role);
 
 var formattedPic = HTMLbioPic.replace("%data%", bio.biopic);
 
 
 for (var prop in bio.contacts){
 
+	//console.log( prop + ':' + bio.contacts[prop]);
 	$("#header #topContacts").append('<li class="flex-item"><span class="orange-text">'+prop+'</span>'+bio.contacts[prop]+'</li>');
 
 }
@@ -45,19 +72,14 @@ $("#header").append(formattedPic);
 
 $("#header").append(welMsg);
 
-if (bio.skills.length !== 0) {
-	$("#header").append(HTMLskillsStart);
-	
-	for (var i = 0; i < bio.skills.length; i++) {
-	
-		$("#header #skills").append('<li class="item"><span class="white-text">'+bio.skills[i]+"</span></li>");
-	
-	}
+$("#header").append(HTMLskillsStart);
 
-} else {
-	$("#header").append('You\'ve got nothing, sucker!');
+for (var i = 0; i < bio.skills.length; i++) {
+	//console.log(bio.skills[i]);
+
+	$("#header #skills").append('<li class="item"><span class="white-text">'+bio.skills[i]+"</span></li>");
+
 }
-
 
 
 var work = {
@@ -113,6 +135,7 @@ var education = {
 
 for (var edu in education.schools){
 
+	//console.log( prop + ':' + bio.contacts[prop]);
 	$("#education").append('<div class="education-entry"><a href="'+education.schools[edu].url+'">'+education.schools[edu].name+'</a>'+'<div class="date-text">'+education.schools[edu].dates+'</div>'+'</div>');
 
 }
@@ -178,6 +201,7 @@ for (var project in projects) {
 	$('#projects').append('<div class="education-entry'+' '+projects[project].title.replace(/\s/g, '')+'">'+'<a href="#">'+projects[project].title+'</a>'+'<div class="date-text">'+projects[project].dates+'</div>'+'<p><br>'+projects[project].description+'</p>'+'</div>'+
 			'<br/>');
 	for (var i = 0; i < projects[project].images.length; i++) {
+			console.log(projects[project].title+' '+projects[project].images[i]);
 			$( '#projects .education-entry.'+projects[project].title.replace(/\s/g, '') ).append('<img src="'+projects[project].images[i]+'"/>');
 	}
 }

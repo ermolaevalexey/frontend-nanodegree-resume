@@ -133,7 +133,8 @@ a {
 
 /* TODO: Replace with image later */
 #header {
-  background-color: #484848;
+  /*background-color: #484848;*/
+  background: #999 none repeat scroll 0 0;
 }
 
 .flex-box {
