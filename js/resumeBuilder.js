@@ -45,7 +45,7 @@ $("#header").append(formattedPic);
 
 $("#header").append(welMsg);
 
-if (bio.skills.length !== 0) {
+if (bio.skills.length > 0) {
 	$("#header").append(HTMLskillsStart);
 	
 	for (var i = 0; i < bio.skills.length; i++) {
@@ -83,9 +83,25 @@ var work = {
 
 };
 
-for (var job in work.jobs) {
-	$('#workExperience').append('<div class="work-entry">'+'<a href="#">'+work.jobs[job].employer+' - '+work.jobs[job].title+'</a>'+'<div class="date-text">'+work.jobs[job].dates+'</div>'+'<p><br>'+work.jobs[job].description+'</p>'+'</div>');
-}
+var displayWork = function() {
+	for (var job in work.jobs) {
+		$('#workExperience').append(HTMLworkStart);
+		var formattedEmployer = HTMLworkEmployer.replace('%data%', work.jobs[job].employer);
+		var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[job].title);
+		var formattedEmployerTitle = formattedEmployer+formattedTitle;
+		$('.work-entry:last').append(formattedEmployerTitle);
+	
+		var formattedDates = HTMLworkDates.replace('%data%', work.jobs[job].dates);
+		$('.work-entry:last').append(formattedDates);
+		var formattedDescription = HTMLworkDescription.replace('%data%', work.jobs[job].description);
+		$('.work-entry:last').append(formattedDescription);
+
+	//$('#workExperience').append('<div class="work-entry">'+'<a href="#">'+work.jobs[job].employer+' - '+work.jobs[job].title+'</a>'+'<div class="date-text">'+work.jobs[job].dates+'</div>'+'<p><br>'+work.jobs[job].description+'</p>'+'</div>');
+	}
+};
+
+displayWork();
+
 
 var education = {
 	"schools" : [
@@ -175,9 +191,9 @@ var projects = [
 ];
 
 for (var project in projects) {
-	$('#projects').append('<div class="education-entry'+' '+projects[project].title.replace(/\s/g, '')+'">'+'<a href="#">'+projects[project].title+'</a>'+'<div class="date-text">'+projects[project].dates+'</div>'+'<p><br>'+projects[project].description+'</p>'+'</div>'+
+	$('#projects').append('<div class="project-entry'+' '+projects[project].title.replace(/\s/g, '')+'">'+'<a href="#">'+projects[project].title+'</a>'+'<div class="date-text">'+projects[project].dates+'</div>'+'<p><br>'+projects[project].description+'</p>'+'</div>'+
 			'<br/>');
 	for (var i = 0; i < projects[project].images.length; i++) {
-			$( '#projects .education-entry.'+projects[project].title.replace(/\s/g, '') ).append('<img src="'+projects[project].images[i]+'"/>');
+			$( '#projects .project-entry.'+projects[project].title.replace(/\s/g, '') ).append('<img src="'+projects[project].images[i]+'"/>');
 	}
 }
