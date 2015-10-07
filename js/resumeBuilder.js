@@ -4,7 +4,7 @@ This is empty on purpose! Your code to build the resume will go here.
 
 
 var bio = {
-	name: 'Alexey Ermolaev',
+	name: 'alexey ermolaev',
 	role: 'Web Developer',
 	contacts : {
 		mobile : "+7 (911) 034 62 37",
@@ -248,7 +248,7 @@ displayWork();
 displayProjs();
 displayEdu();
 
-
+$('#footerContacts').append(internationalizeButton);
 
 
 
